@@ -1,0 +1,7 @@
+project: parso
+target: parse
+duration: 300
+
+cmds:
+  - cmd: python3 /parso/fuzz/fuzz_targets/parse.py
+    libfuzzer: true
