@@ -4,13 +4,14 @@ import atheris
 import sys
 
 with atheris.instrument_imports():
-    from parso import parse, load_grammar
+    from parso import python_bytes_to_unicode
 
 def TestOneInput(input):
     fdp = atheris.FuzzedDataProvider(input)
-    node = parse(fdp.ConsumeUnicodeNoSurrogates(fdp.ConsumeIntInRange(1, 4096)))
-    [issue for issue in load_grammar().iter_errors(node)]
-
+    try:
+        python_bytes_to_unicode(fdp.ConsumeBytes(fdp.ConsumeIntInRange(1, 4096)))
+    except UnicodeDecodeError:
+        return
 
 def main():
     atheris.Setup(sys.argv, TestOneInput)

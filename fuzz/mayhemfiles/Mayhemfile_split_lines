@@ -1,0 +1,7 @@
+project: parso
+target: split_lines
+duration: 300
+
+cmds:
+  - cmd: python3 /parso/fuzz/fuzz_targets/split_lines.py
+    libfuzzer: true

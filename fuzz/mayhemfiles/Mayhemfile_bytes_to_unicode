@@ -1,0 +1,7 @@
+project: parso
+target: bytes_to_unicode
+duration: 300
+
+cmds:
+  - cmd: python3 /parso/fuzz/fuzz_targets/bytes_to_unicode.py
+    libfuzzer: true

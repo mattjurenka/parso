@@ -55,6 +55,8 @@ jobs:
       matrix:
         mayhemfile:
         - fuzz/mayhemfiles/Mayhemfile_parse
+        - fuzz/mayhemfiles/Mayhemfile_bytes_to_unicode
+        - fuzz/mayhemfiles/Mayhemfile_split_lines
     steps:
     - uses: actions/checkout@v3
     - name: Start analysis for ${{ matrix.mayhemfile }}
